@@ -1,3 +1,5 @@
+@use "/src/styles/theme.scss" as theme;
+
 .container {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,7 @@
 
   margin: 0 60px;
 
-  padding: 8px 16px;
+  padding: 16px;
   border-end-start-radius: 24px;
   border-end-end-radius: 24px;
 
@@ -75,9 +77,8 @@
 
 .footer_container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 60px;
 
   margin: 0 60px;
 
@@ -88,7 +89,7 @@
     align-items: flex-end;
     justify-content: space-between;
 
-    padding: 42px;
+    padding: 40px;
     background-color: black;
     border-radius: 24px;
 
@@ -103,7 +104,6 @@
         line-height: 54px;
         letter-spacing: 0.05em;
         font-weight: 500;
-        margin: 0;
       }
 
       .banner_email {
@@ -161,18 +161,77 @@
       gap: 8px;
 
       .title {
-        color: rgba(255, 255, 255, 0.8);
+        color: theme.$light-secondary-color;
         font-weight: 500;
       }
 
       .description {
-        color: rgba(255, 255, 255, 0.7);
+        color: theme.$light-tertiary-color;
         font-weight: 300;
       }
 
       p {
-        margin: 0;
         line-height: 24px;
+      }
+    }
+  }
+
+  .navigator {
+    display: flex;
+    flex-direction: row;
+
+    padding: 0 40px;
+
+    .navigator_left {
+      display: flex;
+      flex-direction: row;
+
+      gap: 42px;
+
+      .title {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .item {
+        font-weight: 500;
+        color: theme.$tertiary-color;
+        font-size: 16px;
+
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+
+        .arrow {
+          color: transparent;
+          font-style: normal;
+
+          transition-property: all;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 150ms;
+        }
+
+        &:hover {
+          color: theme.$primary-color;
+
+          .arrow {
+            color: theme.$primary-color !important;
+            font-style: normal;
+          }
+        }
+      }
+
+      .navigator_about {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .navigator_support {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
       }
     }
   }

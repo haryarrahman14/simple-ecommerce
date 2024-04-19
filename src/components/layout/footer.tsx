@@ -1,6 +1,41 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./layout.module.scss";
+
+const NAVIGATION_ABOUT = [
+  {
+    title: "Blog",
+    href: "/blog",
+  },
+  {
+    title: "Meet The Team",
+    href: "/team",
+  },
+  {
+    title: "Contact Us",
+    href: "/contact-us",
+  },
+];
+
+const NAVIGATION_SUPPORT = [
+  {
+    title: "Contact Us",
+    href: "/contact-us",
+  },
+  {
+    title: "Shipping",
+    href: "/shipping",
+  },
+  {
+    title: "Return",
+    href: "/return",
+  },
+  {
+    title: "FAQ",
+    href: "/faq",
+  },
+];
 
 const Footer: React.FC = () => {
   return (
@@ -32,6 +67,32 @@ const Footer: React.FC = () => {
             <br />
             create a bespoke smart EV charging solution that's right for you.
           </p>
+        </div>
+      </div>
+
+      <div className={styles.navigator}>
+        <div className={styles.navigator_left}>
+          <div className={styles.navigator_about}>
+            <p className={styles.title}>About</p>
+            {NAVIGATION_ABOUT?.map((nav, idx) => (
+              <Link key={idx} href={nav.href}>
+                <p className={styles.item}>
+                  {nav.title} <i className={styles.arrow}>{">"}</i>
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <div className={styles.navigator_support}>
+            <p className={styles.title}>Support</p>
+            {NAVIGATION_SUPPORT?.map((nav, idx) => (
+              <Link key={idx} href={nav.href}>
+                <p className={styles.item}>
+                  {nav.title} <i className={styles.arrow}> {">"}</i>
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </div>

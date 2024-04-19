@@ -7,8 +7,11 @@ import {
   useGetProductsCategories,
 } from "@/hooks/client/products";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Shop: React.FC = () => {
+  const router = useRouter();
+
   const [search, setSearch] = useState<string>("");
   const [category, setCategory] = useState<string>("");
 
@@ -121,7 +124,10 @@ const Shop: React.FC = () => {
                       <div className={styles.button_add}>
                         <p>Add to Chart</p>
                       </div>
-                      <div className={styles.button_buy}>
+                      <div
+                        className={styles.button_buy}
+                        onClick={() => router.push(`/shop/${product?.id}`)}
+                      >
                         <p>Buy Now</p>
                       </div>
                     </div>

@@ -132,7 +132,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className={styles.copyright}>
-        <p>Copyright © 2023 Uangku. All Rights Reserved</p>
+        <p>Copyright © 2023 Shopper. All Rights Reserved</p>
 
         <div className={styles.term}>
           <p className={styles.term_item}>Terms of Service</p>

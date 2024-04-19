@@ -14,6 +14,9 @@ const queries = createQueryKeyStore({
   users: {
     detail: (id: string) => [id],
   },
+  base64: {
+    imgPath: (imgPath: string) => [imgPath],
+  },
 });
 
 export default queries;

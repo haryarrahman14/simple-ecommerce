@@ -18,9 +18,14 @@ const Shop: React.FC = () => {
   const { data: categories, isLoading: isLoadingCategories } =
     useGetProductsCategories();
 
-  const { data: produtcs, isLoading: isLoadingProducts } = useGetProducts({
-    category: category,
-  });
+  const { data: produtcs, isLoading: isLoadingProducts } = useGetProducts(
+    {
+      category: category,
+    },
+    {
+      enabled: !isLoadingCategories,
+    }
+  );
 
   return (
     <div className={styles.shop_container}>

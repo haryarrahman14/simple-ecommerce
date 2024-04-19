@@ -10,15 +10,9 @@ export default async function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { data } = await axios.get(`${NEXT_AUTH_URL}/api/base64`, {
-    params: {
-      imgPath: "image-hero.png",
-    },
-  });
-
   return (
     <div className={styles.container}>
-      <Header blurredImageHero={data?.data} />
+      <Header />
       <div className={styles.main}>{children}</div>
       <Footer />
     </div>

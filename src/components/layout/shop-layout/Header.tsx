@@ -20,11 +20,8 @@ const NAVIGATION = [
   },
 ];
 
-const Header: React.FC<{
-  blurredImageHero: string;
-}> = ({ blurredImageHero }) => {
+const Header: React.FC = () => {
   const pathname = usePathname();
-
   return (
     <div className={styles.hero_container}>
       <div className={styles.banner_container}>
@@ -33,8 +30,7 @@ const Header: React.FC<{
           alt="background"
           fill
           objectFit="cover"
-          blurDataURL={blurredImageHero || ""}
-          placeholder="blur"
+          priority
         />
 
         <p className={styles.banner_title}>Shop</p>

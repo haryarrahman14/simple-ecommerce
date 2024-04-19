@@ -164,9 +164,9 @@
 
   .product {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 60px;
-    grid-row-gap: 60px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 100px;
+    grid-row-gap: 100px;
 
     .card {
       width: 200px;

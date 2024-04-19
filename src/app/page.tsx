@@ -1,3 +1,5 @@
-export default function Home() {
-  return <>TEST</>;
+import { redirect } from "next/navigation";
+
+export default function home() {
+  return redirect("/shop");
 }

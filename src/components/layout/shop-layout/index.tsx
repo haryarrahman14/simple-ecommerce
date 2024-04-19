@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import Header from "./Header";
 
 import styles from "./layout.module.scss";
-import { NEXT_AUTH_URL } from "@/const/env";
 
 export default async function Layout({
   children,

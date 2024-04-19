@@ -5,6 +5,8 @@
   flex-direction: column;
   margin-bottom: 40px;
 
+  overflow: hidden;
+
   .header {
     z-index: 2;
     margin: 0 60px;
@@ -165,9 +167,8 @@
   .product {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 100px;
-    grid-row-gap: 100px;
-
+    grid-column-gap: 60px;
+    grid-row-gap: 60px;
     .card {
       width: 200px;
       display: flex;

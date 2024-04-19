@@ -6,12 +6,18 @@ import {
   useGetProducts,
   useGetProductsCategories,
 } from "@/hooks/client/products";
+import { useState } from "react";
 
 const Shop: React.FC = () => {
+  const [search, setSearch] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+
   const { data: categories, isLoading: isLoadingCategories } =
     useGetProductsCategories();
 
-  const { data: produtcs, isLoading: isLoadingProducts } = useGetProducts({});
+  const { data: produtcs, isLoading: isLoadingProducts } = useGetProducts({
+    category: category,
+  });
 
   return (
     <div className={styles.shop_container}>
@@ -19,7 +25,15 @@ const Shop: React.FC = () => {
         <p className={styles.title}>Give All You Need</p>
 
         <div className={styles.search}>
-          <form>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              const formData = new FormData(event?.currentTarget);
+              const value = formData.get("search-filter") as string;
+
+              setSearch(value);
+            }}
+          >
             <Image
               className={styles.icon_search}
               src="/icon-search.svg"
@@ -27,14 +41,12 @@ const Shop: React.FC = () => {
               height={18}
               alt="icon-search"
             />
-            <input placeholder="Search on Shopper." />
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-            >
-              Search
-            </button>
+            <input
+              id="search-filter"
+              name="search-filter"
+              placeholder="Search on Shopper."
+            />
+            <button type="submit">Search</button>
           </form>
         </div>
       </div>
@@ -47,7 +59,15 @@ const Shop: React.FC = () => {
             {categories && categories?.data?.length > 0 && (
               <div className={styles.list}>
                 {categories?.data?.map((item, idx) => (
-                  <div key={idx} className={styles.item}>
+                  <div
+                    key={idx}
+                    className={`${styles.item} ${
+                      item === category ? styles.active : ""
+                    }`}
+                    onClick={() => {
+                      setCategory(item === category ? "" : item);
+                    }}
+                  >
                     <div
                       className={
                         categories?.data?.length === idx + 1
@@ -74,31 +94,39 @@ const Shop: React.FC = () => {
           <div className={styles.product}>
             {produtcs &&
               produtcs?.data?.length > 0 &&
-              produtcs?.data?.map((product, idx) => (
-                <div key={idx} className={styles.card}>
-                  <p className={styles.category}>{product?.category}</p>
-                  <Image
-                    src={product?.image || ""}
-                    alt="test"
-                    width={220}
-                    height={220}
-                  />
+              produtcs?.data
+                ?.filter((e) => {
+                  if (search) {
+                    return e.title.includes(search);
+                  }
 
-                  <div className={styles.content}>
-                    <p className={styles.title}>{product?.title}</p>
-                    <p className={styles.rate_price}>${product?.price}</p>
-                  </div>
+                  return true;
+                })
+                ?.map((product, idx) => (
+                  <div key={idx} className={styles.card}>
+                    <p className={styles.category}>{product?.category}</p>
+                    <Image
+                      src={product?.image || ""}
+                      alt="test"
+                      width={220}
+                      height={220}
+                    />
 
-                  <div className={styles.cta}>
-                    <div className={styles.button_add}>
-                      <p>Add to Chart</p>
+                    <div className={styles.content}>
+                      <p className={styles.title}>{product?.title}</p>
+                      <p className={styles.rate_price}>${product?.price}</p>
                     </div>
-                    <div className={styles.button_buy}>
-                      <p>Buy Now</p>
+
+                    <div className={styles.cta}>
+                      <div className={styles.button_add}>
+                        <p>Add to Chart</p>
+                      </div>
+                      <div className={styles.button_buy}>
+                        <p>Buy Now</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
           </div>
         )}
       </div>

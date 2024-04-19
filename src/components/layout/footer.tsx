@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import styles from "./layout.module.scss";
+import Image from "next/image";
 
 const NAVIGATION_ABOUT = [
   {
@@ -34,6 +35,29 @@ const NAVIGATION_SUPPORT = [
   {
     title: "FAQ",
     href: "/faq",
+  },
+];
+
+const NAVIGATION_SOCIAL_MEDIA = [
+  {
+    alt: "twitter",
+    src: "/icon-twitter-light.svg",
+    href: "/",
+  },
+  {
+    alt: "facebook",
+    src: "/icon-facebook-light.svg",
+    href: "/",
+  },
+  {
+    alt: "linkedin",
+    src: "/icon-linkedin-light.svg",
+    href: "/",
+  },
+  {
+    alt: "instagram",
+    src: "/icon-instagram-light.svg",
+    href: "/",
   },
 ];
 
@@ -91,6 +115,17 @@ const Footer: React.FC = () => {
                   {nav.title} <i className={styles.arrow}> {">"}</i>
                 </p>
               </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.navigator_right}>
+          <p className={styles.title}>Social Media</p>
+          <div className={styles.item_container}>
+            {NAVIGATION_SOCIAL_MEDIA?.map((item, idx) => (
+              <div key={idx} className={styles.item}>
+                <Image src={item.src} alt={item.alt} width={18} height={18} />
+              </div>
             ))}
           </div>
         </div>

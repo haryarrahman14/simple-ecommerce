@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lukemorales/query-key-factory": "^1.3.4",
     "@tanstack/react-query": "^5.29.2",
     "axios": "^1.6.8",
     "dotenv": "^16.4.5",

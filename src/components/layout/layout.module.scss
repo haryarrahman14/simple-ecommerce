@@ -80,10 +80,8 @@
   flex-direction: column;
   gap: 60px;
 
-  margin: 0 60px;
-
   .banner {
-    width: 100%;
+    margin: 0 60px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -177,6 +175,8 @@
   }
 
   .navigator {
+    margin: 0 60px;
+
     display: flex;
     flex-direction: row;
     align-items: flex-end;
@@ -264,6 +264,37 @@
           overflow: hidden;
         }
       }
+    }
+  }
+
+  .copyright {
+    padding: 16px 100px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .term {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+
+      cursor: pointer;
+
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+
+      .term_item {
+        &:hover {
+          color: theme.$primary-color !important;
+        }
+      }
+    }
+
+    p {
+      color: theme.$tertiary-color;
     }
   }
 }

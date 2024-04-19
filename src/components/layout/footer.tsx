@@ -130,6 +130,15 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <div className={styles.copyright}>
+        <p>Copyright © 2023 Uangku. All Rights Reserved</p>
+
+        <div className={styles.term}>
+          <p className={styles.term_item}>Terms of Service</p>
+          <p className={styles.term_item}>Privacy Policy</p>
+        </div>
+      </div>
     </div>
   );
 };

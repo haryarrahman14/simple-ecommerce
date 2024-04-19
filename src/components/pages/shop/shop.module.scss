@@ -1,10 +1,9 @@
 @use "/src/styles/theme.scss" as theme;
 
 .shop_container {
-  width: 100%;
-  position: absolute;
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 
   .header {
     margin: 0 60px;
@@ -92,6 +91,8 @@
     flex-direction: row;
 
     .category {
+      width: 300px;
+
       display: flex;
       flex-direction: column;
 
@@ -147,6 +148,83 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 60px;
+    grid-row-gap: 60px;
+
+    .card {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .category {
+        width: fit-content;
+        padding: 4px 8px;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: rgba(0, 0, 0, 0.8);
+        font-weight: 500;
+        text-transform: capitalize;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        gap: 4px;
+
+        .title {
+          min-height: 38.875px;
+          padding: 4px 8px;
+          font-weight: 600;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+
+        .rate_price {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: 4px 8px;
+          font-weight: 700;
+          font-size: 18px;
+        }
+      }
+
+      .cta {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .button_add {
+          width: fit-content;
+          padding: 8px 16px;
+          border: 1px solid black;
+          font-size: 12px;
+          border-radius: 16px;
+          font-weight: 400;
+        }
+
+        .button_buy {
+          width: fit-content;
+          padding: 8px 16px;
+          border: 1px solid black;
+          font-size: 12px;
+          border-radius: 16px;
+          font-weight: 400;
+          color: white;
+          background-color: black;
         }
       }
     }

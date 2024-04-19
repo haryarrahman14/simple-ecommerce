@@ -2,11 +2,16 @@
 
 import Image from "next/image";
 import styles from "./shop.module.scss";
-import { useGetProductsCategories } from "@/hooks/client/products";
+import {
+  useGetProducts,
+  useGetProductsCategories,
+} from "@/hooks/client/products";
 
 const Shop: React.FC = () => {
   const { data: categories, isLoading: isLoadingCategories } =
     useGetProductsCategories();
+
+  const { data: produtcs, isLoading: isLoadingProducts } = useGetProducts({});
 
   return (
     <div className={styles.shop_container}>
@@ -62,6 +67,38 @@ const Shop: React.FC = () => {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {!isLoadingProducts && (
+          <div className={styles.product}>
+            {produtcs &&
+              produtcs?.data?.length > 0 &&
+              produtcs?.data?.map((product, idx) => (
+                <div key={idx} className={styles.card}>
+                  <p className={styles.category}>{product?.category}</p>
+                  <Image
+                    src={product?.image || ""}
+                    alt="test"
+                    width={220}
+                    height={220}
+                  />
+
+                  <div className={styles.content}>
+                    <p className={styles.title}>{product?.title}</p>
+                    <p className={styles.rate_price}>${product?.price}</p>
+                  </div>
+
+                  <div className={styles.cta}>
+                    <div className={styles.button_add}>
+                      <p>Add to Chart</p>
+                    </div>
+                    <div className={styles.button_buy}>
+                      <p>Buy Now</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
         )}
       </div>

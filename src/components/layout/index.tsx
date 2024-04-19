@@ -11,7 +11,7 @@ export default function Layout({
   return (
     <div className={styles.container}>
       <Header />
-      {children}
+      <div className={styles.main}>{children}</div>
       <Footer />
     </div>
   );

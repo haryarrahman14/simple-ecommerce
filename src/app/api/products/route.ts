@@ -7,6 +7,8 @@ export async function GET(request: NextRequest) {
   const limit = request.nextUrl.searchParams.get("limit");
   const sort = request.nextUrl.searchParams.get("sort");
 
+  console.log("masuk");
+
   let params: ProductsParams = {};
 
   if (limit) {
@@ -37,6 +39,7 @@ export async function GET(request: NextRequest) {
       );
     })
     .catch((reason) => {
+      console.log({ reason });
       return NextResponse.json(
         {
           message: reason?.response?.data,

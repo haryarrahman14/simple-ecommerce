@@ -1,0 +1,334 @@
+@use "/src/styles/theme.scss" as theme;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  min-height: calc(100vh - 600px);
+}
+
+.hero_container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 550px;
+
+  .banner_container {
+    width: 100%;
+    height: 600px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+
+    img {
+      min-height: 600px;
+      z-index: -1;
+    }
+
+    .banner_title {
+      position: absolute;
+      font-weight: 500;
+      font-size: 300px;
+      color: rgb(250, 250, 250);
+      line-height: 0;
+      bottom: 150px;
+      z-index: -1;
+    }
+  }
+}
+
+.header_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  z-index: 10;
+
+  margin: 0 60px;
+
+  padding: 16px;
+  border-end-start-radius: 24px;
+  border-end-end-radius: 24px;
+
+  background-color: white;
+
+  .logo_container {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+
+    .title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+
+    .active {
+      font-weight: 500;
+    }
+
+    p {
+      padding: 8px 16px;
+      margin: 0px 4px;
+
+      cursor: pointer;
+
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+
+      &:hover {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .search {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 116px;
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: fit-content;
+
+      border-radius: 40px;
+      border: 1px solid black;
+
+      padding: 6px;
+    }
+  }
+}
+
+.footer_container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+  .banner {
+    margin: 0 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    padding: 40px;
+    background-color: black;
+    border-radius: 24px;
+
+    .banner_header {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      .banner_title {
+        color: white;
+        font-size: 42px;
+        line-height: 54px;
+        letter-spacing: 0.05em;
+        font-weight: 500;
+      }
+
+      .banner_email {
+        form {
+          display: flex;
+          flex-direction: row;
+          background-color: white;
+          border-radius: 24px;
+          overflow: hidden;
+
+          &:focus-within {
+            outline: none;
+          }
+        }
+
+        input {
+          flex-grow: 2;
+          border: none;
+          padding-left: 24px;
+
+          font-size: 18px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          margin: 8px;
+          padding: 8px 16px;
+          border-radius: 16px;
+          font-size: 16px;
+
+          cursor: pointer;
+
+          border: 1px solid black;
+          background: black;
+          color: white;
+
+          transition-property: all;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 150ms;
+
+          &:hover {
+            border: 1px solid transparent;
+            background-color: rgb(1, 1, 43);
+          }
+        }
+      }
+    }
+
+    .banner_footer {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .title {
+        color: theme.$light-secondary-color;
+        font-weight: 500;
+      }
+
+      .description {
+        color: theme.$light-tertiary-color;
+        font-weight: 300;
+      }
+
+      p {
+        line-height: 24px;
+      }
+    }
+  }
+
+  .navigator {
+    margin: 0 60px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    padding: 0 40px;
+
+    .navigator_left {
+      display: flex;
+      flex-direction: row;
+
+      gap: 42px;
+
+      .title {
+        font-weight: 600;
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+
+      .item {
+        color: theme.$tertiary-color;
+        font-size: 16px;
+
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+
+        .arrow {
+          color: transparent;
+          font-style: normal;
+
+          transition-property: all;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-duration: 150ms;
+        }
+
+        &:hover {
+          color: theme.$primary-color;
+
+          .arrow {
+            color: theme.$primary-color !important;
+            font-style: normal;
+          }
+        }
+      }
+
+      .navigator_about {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .navigator_support {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    .navigator_right {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .title {
+        color: theme.$tertiary-color;
+        font-size: 16px;
+      }
+
+      .item_container {
+        display: flex;
+        flex-direction: row;
+
+        gap: 8px;
+
+        .item {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background-color: black;
+          border-radius: 40px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    padding: 16px 100px;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .term {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+
+      cursor: pointer;
+
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+
+      .term_item {
+        &:hover {
+          color: theme.$primary-color !important;
+        }
+      }
+    }
+
+    p {
+      color: theme.$tertiary-color;
+    }
+  }
+}

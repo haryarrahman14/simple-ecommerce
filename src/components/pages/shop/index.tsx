@@ -5,7 +5,8 @@ import styles from "./shop.module.scss";
 import { useGetProductsCategories } from "@/hooks/client/products";
 
 const Shop: React.FC = () => {
-  const { data: categories, isLoading } = useGetProductsCategories();
+  const { data: categories, isLoading: isLoadingCategories } =
+    useGetProductsCategories();
 
   return (
     <div className={styles.shop_container}>
@@ -33,41 +34,37 @@ const Shop: React.FC = () => {
         </div>
       </div>
 
-      {!isLoading && (
-        <div className={styles.content}>
+      <div className={styles.content}>
+        {!isLoadingCategories && (
           <div className={styles.category}>
-            <p className={styles.title}>Category</p>
+            <p className={styles.title}>Categories</p>
 
-            <div className={styles.list}>
-              <p className={styles.title}>All Product</p>
+            {categories && categories?.data?.length > 0 && (
+              <div className={styles.list}>
+                {categories?.data?.map((item, idx) => (
+                  <div key={idx} className={styles.item}>
+                    <div
+                      className={
+                        categories?.data?.length === idx + 1
+                          ? styles.lineY_last
+                          : styles.lineY
+                      }
+                    />
 
-              {categories && categories?.data?.length > 0 && (
-                <div className={styles.sub_list}>
-                  {categories?.data?.map((item, idx) => (
-                    <div key={idx} className={styles.item}>
-                      <div
-                        className={
-                          categories?.data?.length === idx + 1
-                            ? styles.lineY_last
-                            : styles.lineY
-                        }
-                      />
+                    <div className={styles.containerX}>
+                      <div className={styles.lineX} />
 
-                      <div className={styles.containerX}>
-                        <div className={styles.lineX} />
-
-                        <div className={styles.box}>
-                          <p>{item}</p>
-                        </div>
+                      <div className={styles.box}>
+                        <p>{item}</p>
                       </div>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

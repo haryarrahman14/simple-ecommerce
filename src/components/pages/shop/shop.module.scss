@@ -102,13 +102,7 @@
         font-size: 20px;
       }
 
-      .list .title {
-        padding: 4px;
-        font-weight: 400;
-        font-size: 16px;
-      }
-
-      .sub_list {
+      .list {
         .item {
           display: flex;
           flex-direction: row;
@@ -120,14 +114,14 @@
           }
 
           .lineY_last {
-            height: 14px;
-            // width: 1px;
+            height: 17px;
             border-left: 1px solid black;
           }
 
           .containerX {
             display: flex;
             flex-direction: row;
+            cursor: pointer;
 
             align-items: center;
 
@@ -137,8 +131,20 @@
             }
 
             .box {
+              border-radius: 4px;
               margin-left: 4px;
+              height: 34px;
               padding: 4px 8px;
+
+              p {
+                text-transform: capitalize;
+              }
+            }
+
+            &:hover {
+              .box {
+                background-color: rgba(0, 0, 0, 0.1);
+              }
             }
           }
         }
